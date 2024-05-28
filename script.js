@@ -1,6 +1,8 @@
 let boxes = document.querySelectorAll(".box");
 let reset = document.querySelector("#reset");
 let gamePop = document.querySelector("#gamePop")
+let dispWin = document.querySelector(".dispWinner")
+let newGame = document.querySelector("#newGame");
 let btn = document.querySelector(".btn");
 let mode = document.querySelector("#mode");
 let body = document.querySelector("body");
@@ -37,6 +39,17 @@ boxes.forEach((box) =>{
     });
 });
 
+// adding reset game properties
+reset.addEventListener("click",() =>{
+    resetGame()
+ });
+newGame.addEventListener("click", () =>{
+    resetGame();
+    gamePop.classList.add("hide");
+})
+
+
+// Creating all the functions
 const checkWinner = () => {
     for(pattern of winpatterns){
         let p1 = boxes[pattern[0]].innerText;
@@ -52,10 +65,17 @@ const checkWinner = () => {
 };
 
 const winner = (win) => {
-    gamePop.innerText = win;
+    dispWin.innerText = `Winner is ${win}`;
+    gamePop.classList.remove("hide");
 }
 
-
+const resetGame = () => {
+    turn  = 0;
+    boxes.forEach((box) => {
+        box.innerText = "";
+        box.disabled = false;
+    })
+}
 
 
 
@@ -65,20 +85,16 @@ mode.addEventListener("click", () => {
     if(light == true){
         mode.innerText = "Light Mode"
         body.style.backgroundColor = "#101500";
-        gamePop.style.backgroundColor = "#FF0062";
+        gamePop.style.backgroundColor = "#F77F00";
         boxes.forEach((box) =>{box.style.backgroundColor = "#bc6c25"});
         light = false;
     }
     else{
         mode.innerText = "Dark Mode"
         body.style.backgroundColor = "#ccff33";
-        gamePop.style.backgroundColor = "#ff70a6";
+        gamePop.style.backgroundColor = "#F77F00";
         boxes.forEach((box) =>{box.style.backgroundColor = "#EAE2B7"});
         light = true;
     }
 
 })
-// reset.addEventListener("click",() =>{
-//     console.log("cgtcuk");
-//     boxes.style.color = "black";
-// });

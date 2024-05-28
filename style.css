@@ -50,17 +50,20 @@ main{
     background-color: #EAE2B7;
     color: #F77F00;
 }
+.msg{
+    display: flex;
+    justify-content: center;
+}
 .hide{
-    display: none;
-    /* display: flex;
-    justify-content: center; */
+    display: none;   
 }
 #gamePop{
     height: 500px;
     width: 300px;
     padding: 10px;
-    background-color:#ff70a6;
+    background-color:#F77F00;
     opacity: 0.90;
     position: absolute;
     color:#EAE2B7;
+    font-size: 50px;
 }
